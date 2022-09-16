@@ -1,2 +1,4 @@
 Для запуска проекта:
-docker-compose up -d --no-deps --build
+
+- изменить расширение файла .env.example на .env
+- docker-compose up -d --no-deps --build
