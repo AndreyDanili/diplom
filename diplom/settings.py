@@ -20,7 +20,7 @@ env = environ.Env(DEBUG=(bool, False))
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-environ.Env.read_env(os.path.join(BASE_DIR, 'env'))
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -42,12 +42,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.github',
+
     'service_order.apps.ServiceOrderConfig',
 
     'rest_framework',
     'django_filters',
     'rest_framework.authtoken',
+    'drf_spectacular',
 ]
+
+SITE_ID = 3
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -64,8 +74,7 @@ ROOT_URLCONF = 'diplom.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,6 +86,8 @@ TEMPLATES = [
         },
     },
 ]
+
+TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),)
 
 WSGI_APPLICATION = 'diplom.wsgi.application'
 
@@ -137,9 +148,6 @@ AUTH_USER_MODEL = 'service_order.User'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 40,
-
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
@@ -150,4 +158,44 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ),
 
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json',
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle'
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '100/day',
+        'user': '1000/day'
+    }
 }
+
+# Celery settings
+CELERY_BROKER_URL = 'redis://redis:6379/1'
+CELERY_BROKER_TRANSPORT = 'redis'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/2'
+
+# SMTP settings
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'your-username@gmail.com'
+EMAIL_HOST_PASSWORD = 'Application spectific password(for eg: smbumqjiurmqrywn)'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+# Spectural settings
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'service_order',
+    'DESCRIPTION': 'Diplom project',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
+}
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]

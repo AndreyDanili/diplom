@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"first_name\" : \"Andrey\",\n    \"last_name\" : \"Danilishin\",\n    \"email\" : \"adanilishin@gmail.com\",\n    \"password\" : \"admin1pwd\",\n    \"company\" : \"PJSC\",\n    \"position\" : \"engineer\"\n    }",
+							"raw": "{\n    \"first_name\" : \"Svyaznoi\",\n    \"last_name\" : \"Magazin\",\n    \"email\" : \"Svyaznoi@gmail.com\",\n    \"password\" : \"admin1pwd\",\n    \"company\" : \"pjs\",\n    \"position\" : \"partner\"\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -23,7 +23,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/user/register",
+							"raw": "http://127.0.0.1:8000/api/user/user_register/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -33,8 +33,50 @@
 							],
 							"port": "8000",
 							"path": [
+								"api",
 								"user",
-								"register"
+								"user_register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 38f73f4d26b5007374c9789d22f420c16abf023d",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"company\" : \"pjs\",\n    \"position\" : \"partner2\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/edit_user/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"edit_user",
+								""
 							]
 						}
 					},
@@ -53,7 +95,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 566848fc0f26a4b45383313800b29e679750ef26",
+								"value": "Token 38f73f4d26b5007374c9789d22f420c16abf023d",
 								"type": "default"
 							}
 						],
@@ -67,7 +109,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/user/details",
+							"raw": "http://127.0.0.1:8000/api/user/get_user_info/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -77,8 +119,10 @@
 							],
 							"port": "8000",
 							"path": [
+								"api",
 								"user",
-								"details"
+								"get_user_info",
+								""
 							]
 						}
 					},
@@ -94,7 +138,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"adanilishin@gmail.com\",\n    \"password\": \"admin1pwd\"\n}",
+							"raw": "{\n    \"email\": \"Svyaznoi@gmail.com\",\n    \"password\": \"admin1pwd\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -102,7 +146,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/user/login",
+							"raw": "http://127.0.0.1:8000/api/user/login/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -112,8 +156,10 @@
 							],
 							"port": "8000",
 							"path": [
+								"api",
 								"user",
-								"login"
+								"login",
+								""
 							]
 						}
 					},
@@ -131,12 +177,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 566848fc0f26a4b45383313800b29e679750ef26",
+								"value": "Token e37dbc49823e1aa78a2a513db77e84cd5e654f30",
 								"type": "default"
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/user/contact",
+							"raw": "http://127.0.0.1:8000/api/contact/get_contact/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -146,8 +192,10 @@
 							],
 							"port": "8000",
 							"path": [
-								"user",
-								"contact"
+								"api",
+								"contact",
+								"get_contact",
+								""
 							]
 						}
 					},
@@ -160,7 +208,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 566848fc0f26a4b45383313800b29e679750ef26",
+								"value": "Token e37dbc49823e1aa78a2a513db77e84cd5e654f30",
 								"type": "default"
 							}
 						],
@@ -174,7 +222,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/user/contact",
+							"raw": "http://127.0.0.1:8000/api/contact/delete_contact/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -184,8 +232,10 @@
 							],
 							"port": "8000",
 							"path": [
-								"user",
-								"contact"
+								"api",
+								"contact",
+								"delete_contact",
+								""
 							]
 						}
 					},
@@ -198,7 +248,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 566848fc0f26a4b45383313800b29e679750ef26",
+								"value": "Token e37dbc49823e1aa78a2a513db77e84cd5e654f30",
 								"type": "default"
 							}
 						],
@@ -212,7 +262,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/user/contact",
+							"raw": "http://127.0.0.1:8000/api/contact/add_contact/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -222,8 +272,10 @@
 							],
 							"port": "8000",
 							"path": [
-								"user",
-								"contact"
+								"api",
+								"contact",
+								"add_contact",
+								""
 							]
 						}
 					},
@@ -236,13 +288,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 566848fc0f26a4b45383313800b29e679750ef26",
+								"value": "Token e37dbc49823e1aa78a2a513db77e84cd5e654f30",
 								"type": "default"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": \"1\",\n    \"city\": \"Murmansk\",\n    \"street\": \"Lenina\",\n    \"house\": \"5\",\n    \"structure\": \"6\",\n    \"building\": \"7\",\n    \"apartment\": \"8\",\n    \"phone\": \"+71234567890\"\n}",
+							"raw": "{\n    \"id\": \"1\",\n    \"city\": \"Murmansk\",\n    \"street\": \"Lenina\",\n    \"house\": \"15\",\n    \"structure\": \"6\",\n    \"building\": \"7\",\n    \"apartment\": \"8\",\n    \"phone\": \"+71234567890\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -250,7 +302,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/user/contact",
+							"raw": "http://127.0.0.1:8000/api/contact/edit_contact/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -260,8 +312,10 @@
 							],
 							"port": "8000",
 							"path": [
-								"user",
-								"contact"
+								"api",
+								"contact",
+								"edit_contact",
+								""
 							]
 						}
 					},
@@ -279,12 +333,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 566848fc0f26a4b45383313800b29e679750ef26",
+								"value": "Token e37dbc49823e1aa78a2a513db77e84cd5e654f30",
 								"type": "default"
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/basket",
+							"raw": "http://127.0.0.1:8000/api/basket/get_basket/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -294,7 +348,10 @@
 							],
 							"port": "8000",
 							"path": [
-								"basket"
+								"api",
+								"basket",
+								"get_basket",
+								""
 							]
 						}
 					},
@@ -307,13 +364,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 566848fc0f26a4b45383313800b29e679750ef26",
+								"value": "Token e37dbc49823e1aa78a2a513db77e84cd5e654f30",
 								"type": "default"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"items\":[\n        {\"id\": 2, \"quantity\": 5},\n        {\"id\": 1, \"quantity\": 4}\n        ]\n}",
+							"raw": "{\n    \"items\":[\n        {\"id\": 2, \"quantity\": 1}\n        ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -321,7 +378,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/basket",
+							"raw": "http://127.0.0.1:8000/api/basket/add_to_basket/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -331,7 +388,10 @@
 							],
 							"port": "8000",
 							"path": [
-								"basket"
+								"api",
+								"basket",
+								"add_to_basket",
+								""
 							]
 						}
 					},
@@ -344,13 +404,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 566848fc0f26a4b45383313800b29e679750ef26",
+								"value": "Token e37dbc49823e1aa78a2a513db77e84cd5e654f30",
 								"type": "default"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"items\":[\n        {\"id\": 2, \"quantity\": 5},\n        {\"id\": 1, \"quantity\": 4}\n        ]\n}",
+							"raw": "{\n    \"items\": \"4\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -358,7 +418,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/basket",
+							"raw": "http://127.0.0.1:8000/api/basket/delete_from_basket/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -368,7 +428,10 @@
 							],
 							"port": "8000",
 							"path": [
-								"basket"
+								"api",
+								"basket",
+								"delete_from_basket",
+								""
 							]
 						}
 					},
@@ -381,13 +444,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 566848fc0f26a4b45383313800b29e679750ef26",
+								"value": "Token e37dbc49823e1aa78a2a513db77e84cd5e654f30",
 								"type": "default"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"items\":[\n        {\n            \"product_info\": 1, \n            \"quantity\": 5}\n        ]\n}",
+							"raw": "{\n    \"items\":[\n        {\n            \"product_info\": 1, \n            \"quantity\": 2}\n        ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -395,7 +458,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/basket",
+							"raw": "http://127.0.0.1:8000/api/basket/add_basket/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -405,7 +468,10 @@
 							],
 							"port": "8000",
 							"path": [
-								"basket"
+								"api",
+								"basket",
+								"add_basket",
+								""
 							]
 						}
 					},
@@ -423,13 +489,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 566848fc0f26a4b45383313800b29e679750ef26",
-								"type": "default",
-								"disabled": true
+								"value": "Token e37dbc49823e1aa78a2a513db77e84cd5e654f30",
+								"type": "default"
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/categories",
+							"raw": "http://127.0.0.1:8000/api/order/get_orders/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -439,7 +504,10 @@
 							],
 							"port": "8000",
 							"path": [
-								"categories"
+								"api",
+								"order",
+								"get_orders",
+								""
 							]
 						}
 					},
@@ -452,12 +520,21 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 566848fc0f26a4b45383313800b29e679750ef26",
+								"value": "Token e37dbc49823e1aa78a2a513db77e84cd5e654f30",
 								"type": "default"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"2\", \n    \"contact\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/order",
+							"raw": "http://127.0.0.1:8000/api/order/add_order/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -467,7 +544,41 @@
 							],
 							"port": "8000",
 							"path": [
-								"order"
+								"api",
+								"order",
+								"add_order",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET partner order",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 38f73f4d26b5007374c9789d22f420c16abf023d",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/order/get_partner_orders/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"order",
+								"get_partner_orders",
+								""
 							]
 						}
 					},
@@ -479,47 +590,18 @@
 			"name": "Partner",
 			"item": [
 				{
-					"name": "GET order",
+					"name": "GET partner shop state",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 566848fc0f26a4b45383313800b29e679750ef26",
-								"type": "default",
-								"disabled": true
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:8000/categories",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"categories"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET state",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Token 2702cfaaf95d89139d0ad8602cdf5436b69a7b0e",
+								"value": "Token 38f73f4d26b5007374c9789d22f420c16abf023d",
 								"type": "default"
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/partner/state",
+							"raw": "http://127.0.0.1:8000/api/shops/get_shop_state/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -529,26 +611,37 @@
 							],
 							"port": "8000",
 							"path": [
-								"partner",
-								"state"
+								"api",
+								"shops",
+								"get_shop_state",
+								""
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "POST order state",
+					"name": "POST partner edit shop state",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 2702cfaaf95d89139d0ad8602cdf5436b69a7b0e",
+								"value": "Token 38f73f4d26b5007374c9789d22f420c16abf023d",
 								"type": "default"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"state\": \"True\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/partner/state",
+							"raw": "http://127.0.0.1:8000/api/shops/edit_shop_state/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -558,26 +651,37 @@
 							],
 							"port": "8000",
 							"path": [
-								"partner",
-								"state"
+								"api",
+								"shops",
+								"edit_shop_state",
+								""
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "POST update price",
+					"name": "POST partner update price",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 2702cfaaf95d89139d0ad8602cdf5436b69a7b0e",
+								"value": "Token 38f73f4d26b5007374c9789d22f420c16abf023d",
 								"type": "default"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"file_name\": \"shop1.yaml\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/partner/update",
+							"raw": "http://127.0.0.1:8000/api/shops/update_price/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -587,8 +691,10 @@
 							],
 							"port": "8000",
 							"path": [
-								"partner",
-								"update"
+								"api",
+								"shops",
+								"update_price",
+								""
 							]
 						}
 					},
@@ -609,7 +715,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://127.0.0.1:8000/categories",
+					"raw": "http://127.0.0.1:8000/api/categories",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -619,6 +725,7 @@
 					],
 					"port": "8000",
 					"path": [
+						"api",
 						"categories"
 					]
 				}
@@ -633,11 +740,12 @@
 					{
 						"key": "Authorization",
 						"value": "Token 566848fc0f26a4b45383313800b29e679750ef26",
-						"type": "default"
+						"type": "default",
+						"disabled": true
 					}
 				],
 				"url": {
-					"raw": "http://127.0.0.1:8000/shops",
+					"raw": "http://127.0.0.1:8000/api/shops",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -647,6 +755,7 @@
 					],
 					"port": "8000",
 					"path": [
+						"api",
 						"shops"
 					]
 				}
@@ -664,7 +773,8 @@
 					{
 						"key": "Authorization",
 						"value": "Token 566848fc0f26a4b45383313800b29e679750ef26",
-						"type": "default"
+						"type": "default",
+						"disabled": true
 					}
 				],
 				"body": {
@@ -677,7 +787,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/products",
+					"raw": "http://127.0.0.1:8000/api/products",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -687,6 +797,7 @@
 					],
 					"port": "8000",
 					"path": [
+						"api",
 						"products"
 					]
 				}

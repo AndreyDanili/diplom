@@ -14,25 +14,29 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 
-from service_order.views import RegisterAccount, AccountDetails, LoginAccount, ContactView, CategoryView, ShopView, ProductInfoView, BasketView, OrderView, PartnerOrders, PartnerState, PartnerUpdate
+from service_order.views import UserViewSet, ContactViewSet, CategoryViewSet, ProductInfoViewSet, BasketViewSet, OrderViewSet, ShopViewSet
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
 app_name = 'service_order'
 
 
+router = DefaultRouter()
+router.register('shops', ShopViewSet)
+router.register('categories', CategoryViewSet)
+router.register('products', ProductInfoViewSet)
+router.register('order', OrderViewSet)
+router.register('basket', BasketViewSet)
+router.register('contact', ContactViewSet)
+router.register('user', UserViewSet)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('user/register', RegisterAccount.as_view(), name='user-register'),
-    path('user/contact', ContactView.as_view(), name='user-contact'),
-    path('user/details', AccountDetails.as_view(), name='user-details'),
-    path('user/login', LoginAccount.as_view(), name='user-login'),
-    path('categories', CategoryView.as_view(), name='categories'),
-    path('shops', ShopView.as_view(), name='shops'),
-    path('products', ProductInfoView.as_view(), name='shops'),
-    path('basket', BasketView.as_view(), name='basket'),
-    path('order', OrderView.as_view(), name='order'),
-    path('partner/orders', PartnerOrders.as_view(), name='partner-orders'),
-    path('partner/update', PartnerUpdate.as_view(), name='partner-update'),
-    path('partner/state', PartnerState.as_view(), name='partner-state'),
+    path('api/', include(router.urls)),
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+    path('accounts/', include('allauth.urls')),
     ]

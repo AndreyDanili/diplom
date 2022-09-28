@@ -1,0 +1,1895 @@
+openapi: 3.0.3
+info:
+  title: service_order
+  version: 1.0.0
+  description: Diplom project
+paths:
+  /api/basket/:
+    get:
+      operationId: basket_list
+      description: Класс для работы с корзиной пользователя
+      tags:
+      - basket
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+          description: ''
+    post:
+      operationId: basket_create
+      description: Класс для работы с корзиной пользователя
+      tags:
+      - basket
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Order'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Order'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+  /api/basket/{id}/:
+    get:
+      operationId: basket_retrieve
+      description: Класс для работы с корзиной пользователя
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Заказ.
+        required: true
+      tags:
+      - basket
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+    put:
+      operationId: basket_update
+      description: Класс для работы с корзиной пользователя
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Заказ.
+        required: true
+      tags:
+      - basket
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Order'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Order'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+    patch:
+      operationId: basket_partial_update
+      description: Класс для работы с корзиной пользователя
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Заказ.
+        required: true
+      tags:
+      - basket
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedOrder'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedOrder'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedOrder'
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+    delete:
+      operationId: basket_destroy
+      description: Класс для работы с корзиной пользователя
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Заказ.
+        required: true
+      tags:
+      - basket
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/basket/add_basket/:
+    post:
+      operationId: basket_add_basket_create
+      description: Редактирование корзины пользователя
+      tags:
+      - basket
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Order'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Order'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+  /api/basket/add_to_basket/:
+    put:
+      operationId: basket_add_to_basket_update
+      description: Добавление позиций в корзину пользователя
+      tags:
+      - basket
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Order'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Order'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+  /api/basket/delete_from_basket/:
+    delete:
+      operationId: basket_delete_from_basket_destroy
+      description: Удаление товаров из корзины пользователя
+      tags:
+      - basket
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/basket/get_basket/:
+    get:
+      operationId: basket_get_basket_retrieve
+      description: Получние корзины пользователя
+      tags:
+      - basket
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+  /api/categories/:
+    get:
+      operationId: categories_list
+      description: Класс для просмотра категорий
+      tags:
+      - categories
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+          description: ''
+    post:
+      operationId: categories_create
+      description: Класс для просмотра категорий
+      tags:
+      - categories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Category'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Category'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+  /api/categories/{id}/:
+    get:
+      operationId: categories_retrieve
+      description: Класс для просмотра категорий
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Категория.
+        required: true
+      tags:
+      - categories
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+    put:
+      operationId: categories_update
+      description: Класс для просмотра категорий
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Категория.
+        required: true
+      tags:
+      - categories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Category'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Category'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+    patch:
+      operationId: categories_partial_update
+      description: Класс для просмотра категорий
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Категория.
+        required: true
+      tags:
+      - categories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCategory'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCategory'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCategory'
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+    delete:
+      operationId: categories_destroy
+      description: Класс для просмотра категорий
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Категория.
+        required: true
+      tags:
+      - categories
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/contact/:
+    get:
+      operationId: contact_list
+      description: Класс для работы с контактами покупателей
+      tags:
+      - contact
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contact'
+          description: ''
+    post:
+      operationId: contact_create
+      description: Класс для работы с контактами покупателей
+      tags:
+      - contact
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Contact'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Contact'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+          description: ''
+  /api/contact/{id}/:
+    get:
+      operationId: contact_retrieve
+      description: Класс для работы с контактами покупателей
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Контакты пользователя.
+        required: true
+      tags:
+      - contact
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+          description: ''
+    put:
+      operationId: contact_update
+      description: Класс для работы с контактами покупателей
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Контакты пользователя.
+        required: true
+      tags:
+      - contact
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Contact'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Contact'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+          description: ''
+    patch:
+      operationId: contact_partial_update
+      description: Класс для работы с контактами покупателей
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Контакты пользователя.
+        required: true
+      tags:
+      - contact
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedContact'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedContact'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedContact'
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+          description: ''
+    delete:
+      operationId: contact_destroy
+      description: Класс для работы с контактами покупателей
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Контакты пользователя.
+        required: true
+      tags:
+      - contact
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/contact/add_contact/:
+    post:
+      operationId: contact_add_contact_create
+      description: Добавление нового контакта пользователя
+      tags:
+      - contact
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Contact'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Contact'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+          description: ''
+  /api/contact/delete_contact/:
+    delete:
+      operationId: contact_delete_contact_destroy
+      description: Удаление контакта пользователя
+      tags:
+      - contact
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/contact/edit_contact/:
+    put:
+      operationId: contact_edit_contact_update
+      description: Редактирование контакта пользователя
+      tags:
+      - contact
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Contact'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Contact'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+          description: ''
+  /api/contact/get_contact/:
+    get:
+      operationId: contact_get_contact_retrieve
+      description: Получение контактов пользователя
+      tags:
+      - contact
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+          description: ''
+  /api/order/:
+    get:
+      operationId: order_list
+      description: Класс для получения и размешения заказов пользователями
+      tags:
+      - order
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+          description: ''
+    post:
+      operationId: order_create
+      description: Класс для получения и размешения заказов пользователями
+      tags:
+      - order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Order'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Order'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+  /api/order/{id}/:
+    get:
+      operationId: order_retrieve
+      description: Класс для получения и размешения заказов пользователями
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Заказ.
+        required: true
+      tags:
+      - order
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+    put:
+      operationId: order_update
+      description: Класс для получения и размешения заказов пользователями
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Заказ.
+        required: true
+      tags:
+      - order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Order'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Order'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+    patch:
+      operationId: order_partial_update
+      description: Класс для получения и размешения заказов пользователями
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Заказ.
+        required: true
+      tags:
+      - order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedOrder'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedOrder'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedOrder'
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+    delete:
+      operationId: order_destroy
+      description: Класс для получения и размешения заказов пользователями
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Заказ.
+        required: true
+      tags:
+      - order
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/order/add_order/:
+    post:
+      operationId: order_add_order_create
+      description: Разместить заказ из корзины пользователя
+      tags:
+      - order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Order'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Order'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+  /api/order/get_orders/:
+    get:
+      operationId: order_get_orders_retrieve
+      description: Получение заказов пользователя
+      tags:
+      - order
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+  /api/order/get_partner_orders/:
+    get:
+      operationId: order_get_partner_orders_retrieve
+      description: Получение заказа поставщиком
+      tags:
+      - order
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+  /api/products/:
+    get:
+      operationId: products_list
+      description: Класс для поиска товаров
+      tags:
+      - products
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductInfo'
+          description: ''
+    post:
+      operationId: products_create
+      description: Класс для поиска товаров
+      tags:
+      - products
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductInfo'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProductInfo'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProductInfo'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductInfo'
+          description: ''
+  /api/products/{id}/:
+    get:
+      operationId: products_retrieve
+      description: Класс для поиска товаров
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Информация о продукте.
+        required: true
+      tags:
+      - products
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductInfo'
+          description: ''
+    put:
+      operationId: products_update
+      description: Класс для поиска товаров
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Информация о продукте.
+        required: true
+      tags:
+      - products
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductInfo'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProductInfo'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProductInfo'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductInfo'
+          description: ''
+    patch:
+      operationId: products_partial_update
+      description: Класс для поиска товаров
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Информация о продукте.
+        required: true
+      tags:
+      - products
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedProductInfo'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedProductInfo'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedProductInfo'
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductInfo'
+          description: ''
+    delete:
+      operationId: products_destroy
+      description: Класс для поиска товаров
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Информация о продукте.
+        required: true
+      tags:
+      - products
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/products/search_products/:
+    get:
+      operationId: products_search_products_retrieve
+      description: Общий поиск товаров или поиск товаров по параметрам
+      tags:
+      - products
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductInfo'
+          description: ''
+  /api/shops/:
+    get:
+      operationId: shops_list
+      description: Класс для работы с магазином
+      tags:
+      - shops
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Shop'
+          description: ''
+    post:
+      operationId: shops_create
+      description: Класс для работы с магазином
+      tags:
+      - shops
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Shop'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Shop'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Shop'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shop'
+          description: ''
+  /api/shops/{id}/:
+    get:
+      operationId: shops_retrieve
+      description: Класс для работы с магазином
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Магазин.
+        required: true
+      tags:
+      - shops
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shop'
+          description: ''
+    put:
+      operationId: shops_update
+      description: Класс для работы с магазином
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Магазин.
+        required: true
+      tags:
+      - shops
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Shop'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Shop'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Shop'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shop'
+          description: ''
+    patch:
+      operationId: shops_partial_update
+      description: Класс для работы с магазином
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Магазин.
+        required: true
+      tags:
+      - shops
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedShop'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedShop'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedShop'
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shop'
+          description: ''
+    delete:
+      operationId: shops_destroy
+      description: Класс для работы с магазином
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Магазин.
+        required: true
+      tags:
+      - shops
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/shops/edit_shop_state/:
+    post:
+      operationId: shops_edit_shop_state_create
+      description: Изменение текущего статуса магазина
+      tags:
+      - shops
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Shop'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Shop'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Shop'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shop'
+          description: ''
+  /api/shops/get_shop_state/:
+    get:
+      operationId: shops_get_shop_state_retrieve
+      description: Получение текущего статуса магазина
+      tags:
+      - shops
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shop'
+          description: ''
+  /api/shops/update_price/:
+    post:
+      operationId: shops_update_price_create
+      description: Обновление прайса товаров поставщика
+      tags:
+      - shops
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Shop'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Shop'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Shop'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shop'
+          description: ''
+  /api/user/:
+    get:
+      operationId: user_list
+      description: Класс для работы с пользователями
+      tags:
+      - user
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+          description: ''
+    post:
+      operationId: user_create
+      description: Класс для работы с пользователями
+      tags:
+      - user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /api/user/{id}/:
+    get:
+      operationId: user_retrieve
+      description: Класс для работы с пользователями
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Пользователь.
+        required: true
+      tags:
+      - user
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    put:
+      operationId: user_update
+      description: Класс для работы с пользователями
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Пользователь.
+        required: true
+      tags:
+      - user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    patch:
+      operationId: user_partial_update
+      description: Класс для работы с пользователями
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Пользователь.
+        required: true
+      tags:
+      - user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    delete:
+      operationId: user_destroy
+      description: Класс для работы с пользователями
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Пользователь.
+        required: true
+      tags:
+      - user
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/user/edit_user/:
+    post:
+      operationId: user_edit_user_create
+      description: Редактирование данных пользователя
+      tags:
+      - user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /api/user/get_user_info/:
+    get:
+      operationId: user_get_user_info_retrieve
+      description: Получение данных пользователя
+      tags:
+      - user
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /api/user/login/:
+    post:
+      operationId: user_login_create
+      description: Авторизация пользователя
+      tags:
+      - user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /api/user/user_register/:
+    post:
+      operationId: user_user_register_create
+      description: Регистрация пользователя
+      tags:
+      - user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+components:
+  schemas:
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Название
+          maxLength: 40
+      required:
+      - id
+      - name
+    Contact:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        city:
+          type: string
+          title: Город
+          maxLength: 50
+        street:
+          type: string
+          title: Улица
+          maxLength: 100
+        house:
+          type: string
+          title: Дом
+          maxLength: 15
+        structure:
+          type: string
+          title: Корпус
+          maxLength: 15
+        building:
+          type: string
+          title: Строение
+          maxLength: 15
+        apartment:
+          type: string
+          title: Квартира
+          maxLength: 15
+        user:
+          type: integer
+          writeOnly: true
+          title: Пользователь
+        phone:
+          type: string
+          title: Телефон
+          maxLength: 20
+      required:
+      - city
+      - id
+      - phone
+      - street
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        ordered_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItemCreate'
+          readOnly: true
+        state:
+          allOf:
+          - $ref: '#/components/schemas/StateEnum'
+          title: Статус
+        dt:
+          type: string
+          format: date-time
+          readOnly: true
+        total_sum:
+          type: integer
+        contact:
+          allOf:
+          - $ref: '#/components/schemas/Contact'
+          readOnly: true
+      required:
+      - contact
+      - dt
+      - id
+      - ordered_items
+      - state
+      - total_sum
+    OrderItemCreate:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        product_info:
+          allOf:
+          - $ref: '#/components/schemas/ProductInfo'
+          readOnly: true
+        quantity:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          title: Количество
+        order:
+          type: integer
+          writeOnly: true
+          title: Заказ
+      required:
+      - id
+      - product_info
+      - quantity
+    PatchedCategory:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Название
+          maxLength: 40
+    PatchedContact:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        city:
+          type: string
+          title: Город
+          maxLength: 50
+        street:
+          type: string
+          title: Улица
+          maxLength: 100
+        house:
+          type: string
+          title: Дом
+          maxLength: 15
+        structure:
+          type: string
+          title: Корпус
+          maxLength: 15
+        building:
+          type: string
+          title: Строение
+          maxLength: 15
+        apartment:
+          type: string
+          title: Квартира
+          maxLength: 15
+        user:
+          type: integer
+          writeOnly: true
+          title: Пользователь
+        phone:
+          type: string
+          title: Телефон
+          maxLength: 20
+    PatchedOrder:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        ordered_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItemCreate'
+          readOnly: true
+        state:
+          allOf:
+          - $ref: '#/components/schemas/StateEnum'
+          title: Статус
+        dt:
+          type: string
+          format: date-time
+          readOnly: true
+        total_sum:
+          type: integer
+        contact:
+          allOf:
+          - $ref: '#/components/schemas/Contact'
+          readOnly: true
+    PatchedProductInfo:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        model:
+          type: string
+          title: Модель
+          maxLength: 80
+        product:
+          allOf:
+          - $ref: '#/components/schemas/Product'
+          readOnly: true
+        shop:
+          type: integer
+          title: Магазин
+        quantity:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          title: Количество
+        price:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          title: Цена
+        price_rrc:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          title: Рекомендуемая розничная цена
+        product_parameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductParameter'
+          readOnly: true
+    PatchedShop:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Название
+          maxLength: 50
+        state:
+          type: boolean
+          title: Статус получения заказов
+    PatchedUser:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 254
+        company:
+          type: string
+          title: Компания
+          maxLength: 40
+        position:
+          type: string
+          title: Должность
+          maxLength: 40
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+          readOnly: true
+    Product:
+      type: object
+      properties:
+        name:
+          type: string
+          title: Название
+          maxLength: 80
+        category:
+          type: string
+          readOnly: true
+      required:
+      - category
+      - name
+    ProductInfo:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        model:
+          type: string
+          title: Модель
+          maxLength: 80
+        product:
+          allOf:
+          - $ref: '#/components/schemas/Product'
+          readOnly: true
+        shop:
+          type: integer
+          title: Магазин
+        quantity:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          title: Количество
+        price:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          title: Цена
+        price_rrc:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          title: Рекомендуемая розничная цена
+        product_parameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductParameter'
+          readOnly: true
+      required:
+      - id
+      - price
+      - price_rrc
+      - product
+      - product_parameters
+      - quantity
+    ProductParameter:
+      type: object
+      properties:
+        parameter:
+          type: string
+          readOnly: true
+        value:
+          type: string
+          title: Значение
+          maxLength: 100
+      required:
+      - parameter
+      - value
+    Shop:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Название
+          maxLength: 50
+        state:
+          type: boolean
+          title: Статус получения заказов
+      required:
+      - id
+      - name
+    StateEnum:
+      enum:
+      - basket
+      - new
+      - confirmed
+      - assembled
+      - sent
+      - delivered
+      - canceled
+      type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 254
+        company:
+          type: string
+          title: Компания
+          maxLength: 40
+        position:
+          type: string
+          title: Должность
+          maxLength: 40
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+          readOnly: true
+      required:
+      - contacts
+      - email
+      - id
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"
